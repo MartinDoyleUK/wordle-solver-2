@@ -47,13 +47,13 @@ const run = async () => {
   );
   console.log(`The following past words are not in the current total words list:
 ${[...missingWords]
-      .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
-      .join('\n')}
+    .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
+    .join('\n')}
 `);
   console.log(`These are the five-letter words:
 ${[...fiveLetterWordsSet]
-      .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
-      .join('\n')}
+    .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
+    .join('\n')}
 `);
 };
 
