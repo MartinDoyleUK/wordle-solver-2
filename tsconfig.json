@@ -1,6 +1,7 @@
 {
-	"extends": "@sindresorhus/tsconfig",
-	"compilerOptions": {
-		"outDir": "dist"
-	}
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "dist"
+  },
+  "extends": "@sindresorhus/tsconfig"
 }
