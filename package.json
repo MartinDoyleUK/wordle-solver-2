@@ -4,6 +4,7 @@
   "description": "",
   "license": "UNLICENSED",
   "author": "Martin Doyle <npm.author@martindoyle.com>",
+  "type": "module",
   "files": [
     "dist/"
   ],
@@ -11,8 +12,18 @@
   "scripts": {
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
-    "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "clean": "rm -rf dist/",
+    "start:watch": "nodemon --config bin/nodemon/runner.json",
+    "start": "node dist/index.js",
+    "build:clean": "run-s clean build",
+    "build:copy-static:watch": "sync-glob --watch 'src/**/*.txt' dist/",
+    "build:copy-static": "sync-glob 'src/**/*.txt' dist/",
+    "build:ts:watch": "tsc --watch",
+    "build:ts": "tsc",
+    "build:watch": "run-p build:ts:watch build:copy-static:watch",
+    "build": "run-p build:ts build:copy-static",
+    "dev:watch": "run-p nodemon:runner nodemon:rebuild",
+    "dev": "yarn build && run-p build:watch start:watch"
   },
   "devDependencies": {
     "@sindresorhus/tsconfig": "^3.0.1",
@@ -21,6 +32,9 @@
     "eslint": "^8.46.0",
     "eslint-config-canonical": "^41.1.7",
     "eslint-plugin-canonical": "^4.9.0",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "sync-glob": "^1.4.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }

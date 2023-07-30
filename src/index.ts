@@ -1,17 +1,22 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT_DIR = path.join(__dirname, '..');
-const ALL_WORDS_FILE = path.join(ROOT_DIR, 'words.txt');
-const PAST_WORDLE_WORDS_FILE = path.join(ROOT_DIR, 'past-wordle-words.txt');
+
+// eslint-disable-next-line canonical/id-match
+const FILENAME = fileURLToPath(import.meta.url);
+const DIRNAME = path.dirname(FILENAME);
+const SRC_DIR = DIRNAME;
+const SOWPODS_FILE = path.join(SRC_DIR, 'sowpods.txt');
+const PAST_WORDS_FILE = path.join(SRC_DIR, 'past-words.txt');
 
 const run = async () => {
   // Grab raw file contents
-  const allWordsRaw = await fs.readFile(ALL_WORDS_FILE, 'utf8');
-  const pastWordsRaw = await fs.readFile(PAST_WORDLE_WORDS_FILE, 'utf8');
+  const sowpodWordsRaw = await fs.readFile(SOWPODS_FILE, 'utf8');
+  const pastWordsRaw = await fs.readFile(PAST_WORDS_FILE, 'utf8');
 
   // Obtain the five-letter words
-  const fiveLetterWords = allWordsRaw
+  const fiveLetterWords = sowpodWordsRaw
     .split('\n')
     .map((nextWord) => nextWord.trim())
     .filter((nextWord) => {
@@ -50,11 +55,11 @@ ${[...missingWords]
     .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
     .join('\n')}
 `);
-  console.log(`These are the five-letter words:
-${[...fiveLetterWordsSet]
-    .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
-    .join('\n')}
-`);
+  //   console.log(`These are the five-letter words:
+  // ${[...fiveLetterWordsSet]
+  //     .map((nextWord, idx) => `${idx + 1}. ${nextWord}`)
+  //     .join('\n')}
+  // `);
 };
 
-run();
+run().catch(error => console.error(error));

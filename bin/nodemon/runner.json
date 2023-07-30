@@ -1,0 +1,14 @@
+{
+  "events": {
+    "start": "cls || clear"
+  },
+  "execMap": {
+    "js": "node"
+  },
+  "ext": "js,json",
+  "restartable": "rs",
+  "verbose": false,
+  "watch": [
+    "dist/"
+  ]
+}
