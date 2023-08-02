@@ -10,11 +10,9 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "lint:fix": "eslint . --fix",
-    "lint": "eslint .",
+    "---------------- LIFECYCLE ----------------": "",
     "clean": "rm -rf dist/",
-    "start:watch": "nodemon --config bin/nodemon/runner.json",
-    "start": "node dist/index.js",
+    "---------------- BUILDING ----------------": "",
     "build:clean": "run-s clean build",
     "build:copy-static:watch": "sync-glob --watch 'src/**/*.txt' dist/",
     "build:copy-static": "sync-glob 'src/**/*.txt' dist/",
@@ -22,8 +20,16 @@
     "build:ts": "tsc",
     "build:watch": "run-p build:ts:watch build:copy-static:watch",
     "build": "run-p build:ts build:copy-static",
-    "dev:watch": "run-p nodemon:runner nodemon:rebuild",
-    "dev": "yarn build && run-p build:watch start:watch"
+    "---------------- LINTING ----------------": "",
+    "lint:fix": "eslint . --fix",
+    "lint": "eslint .",
+    "---------------- RUNNING ----------------": "",
+    "dev": "yarn build && run-p build:watch start:watch",
+    "start:watch": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
   },
   "devDependencies": {
     "@sindresorhus/tsconfig": "^3.0.1",
