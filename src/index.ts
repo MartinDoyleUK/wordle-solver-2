@@ -35,11 +35,6 @@ const run = async () => {
   // There are 791 historical Wordle words
   // There are 0 historical words missing from the possible words
 
-  // What do you want to achieve? I want to know the best starting words.
-  // What are the best starting words? The ones that will most reduce the number of possible words, when compared to the target word.
-  // How are possible words excluded? When the letters in the guess words are not present in the target word, we can eliminate any possible words containing these letters.
-  // How else can we reduce the number of possible words? By using the correct letters from the guess to reduce the possible words.
-
   const firstGuess = 'sooty';
   const targetWord = 'those';
   const firstGuessResult = testGuess(firstGuess, targetWord);
