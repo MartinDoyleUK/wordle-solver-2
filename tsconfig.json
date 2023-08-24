@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "module": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "outDir": "dist",
+    "rootDir": "src",
     "target": "ESNext"
   },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tmp"
+  ],
   "extends": "@sindresorhus/tsconfig"
 }

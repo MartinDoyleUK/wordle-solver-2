@@ -1,10 +1,10 @@
 import { testGuess } from './test-guess.js';
 
 describe('testGuess', () => {
-  it('should return all undefined for no matches', () => {
+  it('should return undefined for no matches', () => {
     const TEST_GUESS = 'abcde';
     const TEST_TARGET = 'fghij';
-    const EXPECTED_RESULT = [undefined, undefined, undefined, undefined, undefined];
+    const EXPECTED_RESULT = undefined;
 
     const result = testGuess(TEST_GUESS, TEST_TARGET);
 

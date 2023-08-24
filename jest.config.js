@@ -1,7 +1,5 @@
 /* eslint-disable canonical/filename-match-exported */
-import { type Config } from 'jest';
-
-const config: Config = {
+const config = {
   moduleNameMapper: {
     '(.+)\\.js': '$1'
   },

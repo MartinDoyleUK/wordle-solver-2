@@ -72,7 +72,9 @@ module.exports = {
     'id-length': 0,
     'indent': [2, 2],
     'no-console': 0,
+    'no-multiple-empty-lines': [2, { max: 1 }],
     'prettier/prettier': 0,
     'unicorn/prevent-abbreviations': 0,
+    '@typescript-eslint/no-non-null-assertion':0,
   }
 };

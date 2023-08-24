@@ -1,10 +1,12 @@
 import axios from 'axios';
 
+type DownloadPastWordsFn = () => Promise<string[]>
+
 const PAST_WORDS_PAGE = 'https://www.rockpapershotgun.com/wordle-past-answers';
 const LINE_TO_INDEX = '<h2>All Wordle answers</h2>';
 const ANSWER_LINE_REGEX = /^<li>([^<]+)<\/li>$/u;
 
-export const downloadPastWords = async (): Promise<string[]> => {
+export const downloadPastWords: DownloadPastWordsFn = async () => {
   const { data, status, statusText } = await axios.get(PAST_WORDS_PAGE);
   const pastWords: string[] = [];
   if (status >= 400) {
